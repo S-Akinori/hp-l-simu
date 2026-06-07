@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import Button from "../Button.astro";
+import CTAMan from "@/images/cta-man.png"
+import { siteConfig } from "../../config/site";
+---
+
+<section id="plans" class="animate-reveal-up animate-pulse-soft relative mx-auto mt-6 mb-[62px] grid w-[min(1100px,calc(100%_-_48px))] grid-cols-[1fr_auto_160px] items-center gap-[34px] overflow-hidden rounded-[14px] bg-linear-to-r from-[#2fbd5e] to-[#0e903f] py-[34px] pr-8 pl-12 text-white max-[980px]:grid-cols-1 max-[980px]:pr-[200px] max-sm:w-[min(100%_-_28px,480px)] max-sm:px-6 max-sm:pt-[30px] max-sm:pb-40">
+  <div>
+    <h2 class="m-0 mb-[19px] text-[28px] leading-[1.42] font-black max-sm:text-[23px]">シミュレーションで<br />ビジネスをもっと加速させましょう！</h2>
+    <p class="m-0 text-sm leading-[1.8] font-extrabold">まずはお気軽にご相談ください。貴社に最適なシミュレーションBotをご提案します。</p>
+  </div>
+  <div class="grid gap-3.5">
+    <Button href="/contact/" variant="white" size="lg" icon="mail">お問い合わせ</Button>
+    <Button href={siteConfig.materialsPath} download variant="white" size="lg" icon="doc">資料ダウンロード</Button>
+  </div>
+  <Image class="absolute top-1/2 right-4 -translate-y-1/2 max-[980px]:hidden" width={200} src={CTAMan} alt="シミュレーションでビジネスをもっと加速させましょう！" loading="lazy" />
+</section>

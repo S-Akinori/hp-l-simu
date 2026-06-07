@@ -1,0 +1,38 @@
+---
+import Button from "./Button.astro";
+import { footerLinks, legalLinks } from "../data/lpContent";
+import Logo from "@/images/logo-trans.png"
+import { Image } from "astro:assets";
+import { siteConfig } from "../config/site";
+---
+
+<footer class="bg-[#0d2b19] text-white">
+  <div class="mx-auto grid w-[min(1100px,calc(100%_-_48px))] grid-cols-[1.1fr_1fr_auto] gap-12 py-12 max-[980px]:grid-cols-2 max-sm:w-[min(100%_-_28px,480px)] max-sm:grid-cols-1 max-sm:gap-9 max-sm:py-10">
+    <div>
+      <a class="inline-flex items-start gap-2.5" href="/" aria-label="L-Simu トップ">
+        <Image height={80} src={Logo} alt="L-Simu" />
+      </a>
+      <p class="mt-6 mb-0 max-w-[360px] text-[13px] leading-[1.9] font-bold text-white/75">
+        シミュレーションBotで見込み客との接点を増やし、問い合わせ・資料請求・成約につながる導線づくりを支援します。
+      </p>
+    </div>
+
+    <nav aria-label="フッターナビゲーション" class="grid grid-cols-2 gap-x-8 gap-y-3 text-[13px] font-extrabold text-white/85 max-sm:grid-cols-1">
+      {footerLinks.map((item) => <a class="transition hover:text-white" href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="grid content-start gap-3.5">
+      <Button href="/contact/" variant="solid" size="sm" icon="mail" class="w-[220px] max-sm:w-full">お問い合わせ</Button>
+      <Button href={siteConfig.materialsPath} download variant="outline" size="sm" icon="doc" class="w-[220px] max-sm:w-full">資料ダウンロード</Button>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex w-[min(1100px,calc(100%_-_48px))] items-center justify-between gap-5 py-5 text-[11px] font-bold text-white/55 max-sm:w-[min(100%_-_28px,480px)] max-sm:flex-col max-sm:items-start">
+      <p class="m-0">© 2026 L-Simu. All rights reserved.</p>
+      <nav aria-label="法務リンク" class="flex flex-wrap gap-x-5 gap-y-2">
+        {legalLinks.map((item) => <a class="transition hover:text-white" href={item.href}>{item.label}</a>)}
+      </nav>
+    </div>
+  </div>
+</footer>

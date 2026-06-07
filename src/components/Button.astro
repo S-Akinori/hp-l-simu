@@ -1,0 +1,61 @@
+---
+import ButtonIcon from "./ButtonIcon.astro";
+
+type Variant = "solid" | "outline" | "white";
+type Size = "sm" | "md" | "lg";
+type Icon = "mail" | "doc";
+
+interface Props {
+  href?: string;
+  download?: boolean | string;
+  type?: "button" | "submit" | "reset";
+  variant?: Variant;
+  size?: Size;
+  icon?: Icon;
+  full?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  download,
+  type = "button",
+  variant = "solid",
+  size = "md",
+  icon,
+  full = false,
+  class: className = "",
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-[9px] rounded-[5px] border-[1.5px] px-[22px] font-extrabold transition hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(18,152,75,0.16)]";
+
+const variants: Record<Variant, string> = {
+  solid: "border-brand bg-linear-to-b from-[#1cac58] to-[#0c873e] text-white fill-white",
+  outline: "border-brand bg-white text-brand fill-brand",
+  white: "border-white bg-white text-brand",
+};
+
+const sizes: Record<Size, string> = {
+  sm: "min-h-[42px] text-[13px]",
+  md: "min-h-[46px] text-[13px]",
+  lg: "min-h-14 min-w-[196px] text-[15px]",
+};
+
+const widthClass = full ? "w-full" : variant === "white" ? "w-80 max-sm:w-full" : "";
+const classes = [base, variants[variant], sizes[size], widthClass, className].filter(Boolean).join(" ");
+---
+
+{
+  href ? (
+    <a class={classes} href={href} download={download}>
+      {icon && <ButtonIcon name={icon} />}
+      <slot />
+    </a>
+  ) : (
+    <button class={classes} type={type}>
+      {icon && <ButtonIcon name={icon} />}
+      <slot />
+    </button>
+  )
+}

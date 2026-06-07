@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import Button from "../Button.astro";
+import HeroBotImage from "../../images/hero-bot.png";
+import MobileHeroBotImage from "../../images/hero-bot-mobile.png";
+import Logo from "../../images/logo-trans.png";
+import { siteConfig } from "../../config/site";
+
+---
+
+<section class="bg-[url(../images/bg-hero.png)] bg-size-[50%] bg-bottom-right bg-no-repeat">
+  <div class="py-4 relative mx-auto container grid min-h-[630px] grid-cols-[0.9fr_1.1fr] items-center max-[980px]:grid-cols-1 max-[980px]:gap-6 max-sm:w-[min(100%_-_28px,480px)]">
+    <div class="animate-reveal-up pl-[74px] max-[980px]:pl-0">
+      <h1 class="hidden">L-Simu-シミュレーションができるLINEBotを自由に作成</h1>
+      <h2 class="m-0 mb-4 text-[34px] leading-[1.42] font-black max-sm:text-[27px]">シミュレーションで<br />問い合わせを増やす！</h2>
+      <Image src={Logo} alt="L-Simu" width={350} />
+      <p class="m-0 mb-[30px] w-[min(480px,100%)] text-sm leading-8 font-bold text-[#253128]">誰でも簡単にシミュレーションBotを作成。<br />Webサイトで見込み客を集め、問い合わせ・成約につなげます。</p>
+      <div class="flex gap-3.5 max-sm:flex-col">
+        <Button href="#contact" variant="solid" size="lg" icon="mail">お問い合わせ</Button>
+        <Button href={siteConfig.materialsPath} download variant="outline" size="lg" icon="doc">資料ダウンロード</Button>
+      </div>
+    </div>
+    <div class="animate-reveal-up animate-reveal-delay-2 relative" aria-label="L-Simu Botの利用イメージ">
+      <picture>
+        <source srcset={MobileHeroBotImage.src} media="(max-width: 640px)" />
+        <Image src={HeroBotImage} alt="L-Simu Botの利用イメージ" width={560} height={560} class="w-full" />
+      </picture>
+      <div class="md:absolute top-7 right-2 z-[1] rounded-full border-2 border-brand bg-white p-4 text-center leading-[1.8] font-black text-[#132018]">様々なシミュレーションを<br />自由に作れる！</div>
+    </div>
+  </div>
+</section>

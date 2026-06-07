@@ -1,0 +1,50 @@
+<script>
+  const revealSelector = ".animate-reveal-up";
+
+  const reveal = (element: Element) => {
+    element.classList.add("is-visible");
+  };
+
+  const setupScrollReveal = () => {
+    const targets = Array.from(document.querySelectorAll<HTMLElement>(revealSelector));
+
+    if (!targets.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(reveal);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.16,
+      },
+    );
+
+    targets.forEach((target) => observer.observe(target));
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupScrollReveal, { once: true });
+  } else {
+    setupScrollReveal();
+  }
+</script>
+
+<noscript>
+  <style>
+    .animate-reveal-up {
+      opacity: 1;
+      translate: 0 0;
+    }
+  </style>
+</noscript>

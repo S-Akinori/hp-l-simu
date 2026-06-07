@@ -1,0 +1,32 @@
+---
+import SectionTitle from "../SectionTitle.astro";
+import { solutionItems } from "../../data/lpContent";
+import SolutionImage from "@/images/solution.png";
+import MobileSolutionImage from "@/images/solution-mobile.png";
+import { Image } from "astro:assets";
+---
+
+<section class="relative rounded-t-[36px] bg-white py-[58px] pb-[68px] shadow-[0_-18px_50px_rgba(15,78,35,0.04)] max-sm:py-11 max-sm:pb-[52px]">
+  <SectionTitle title="L-Simuが解決します！" green />
+  <div class="mx-auto grid w-[min(960px,calc(100%_-_48px))] grid-cols-2 items-center max-[980px]:grid-cols-2 max-sm:w-[min(100%_-_28px,480px)] max-sm:grid-cols-1">
+    <div class="animate-reveal-up relative min-h-[270px] max-sm:min-h-[260px]">
+      <picture>
+        <source srcset={MobileSolutionImage.src} media="(max-width: 640px)" />
+        <Image src={SolutionImage} alt="L-Simuの利用イメージ" width={400} height={270} class="animate-float-soft w-full" />
+      </picture>
+    </div>
+    <div class="grid gap-6">
+      {
+        solutionItems.map((item) => (
+          <div class="animate-reveal-up grid grid-cols-[24px_1fr] gap-[13px]">
+            <span class="grid h-[21px] w-[21px] place-items-center rounded-full bg-brand text-[13px] font-black text-white">✓</span>
+            <div>
+              <h3 class="m-0 mb-1.5 text-base font-black">{item.title}</h3>
+              <p class="m-0 text-[13px] leading-[1.7] font-bold text-[#39473d]">{item.text}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

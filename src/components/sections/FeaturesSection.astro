@@ -1,0 +1,19 @@
+---
+import SectionTitle from "../SectionTitle.astro";
+import { features } from "../../data/lpContent";
+---
+
+<section id="features" class="relative bg-linear-to-b from-[#edf8ef] to-[#f7fcf7] py-[58px] pb-[68px] max-sm:py-11 max-sm:pb-[52px]">
+  <SectionTitle title="L-Simuの主な機能" green />
+  <div class="mx-auto grid w-[min(1080px,calc(100%_-_48px))] grid-cols-5 gap-5 max-[980px]:grid-cols-2 max-sm:w-[min(100%_-_28px,480px)] max-sm:grid-cols-1">
+    {
+      features.map((item) => (
+        <article class="motion-card animate-reveal-up min-h-[202px] rounded-xl bg-white px-[22px] py-[30px] text-center shadow-soft">
+          <img class="mx-auto mb-6 h-[62px] w-[62px] object-contain" src={`/assets/${item.icon}`} alt="" />
+          <h3 class="m-0 mb-3.5 text-base font-black">{item.title}</h3>
+          <p class="m-0 text-[13px] leading-[1.85] font-bold text-[#243129]">{item.text}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

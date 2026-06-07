@@ -1,0 +1,106 @@
+---
+import PageHero from "../components/PageHero.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { siteConfig } from "../config/site";
+
+const policySections = [
+  {
+    title: "第1条 個人情報",
+    paragraphs: [
+      "本プライバシーポリシーにおいて「個人情報」とは、個人情報の保護に関する法律に定める個人情報をいいます。",
+    ],
+  },
+  {
+    title: "第2条 取得する情報",
+    paragraphs: [
+      "当社は、L-Simuの提供、お問い合わせ対応、資料送付、導入相談等にあたり、氏名、会社・事務所名、メールアドレス、電話番号、業種、お問い合わせ内容その他利用者が入力または提供した情報を取得することがあります。",
+    ],
+  },
+  {
+    title: "第3条 利用目的",
+    paragraphs: ["当社は、取得した個人情報を以下の目的で利用します。"],
+    list: [
+      "お問い合わせ、資料請求、導入相談への対応",
+      "L-Simuおよび関連サービスの提供、案内、契約手続き、サポート",
+      "サービス改善、新機能開発、品質向上のための分析",
+      "メンテナンス、重要なお知らせ、規約変更等の連絡",
+      "不正利用の防止、トラブル対応、法令または規約違反への対応",
+      "上記の利用目的に付随する目的",
+    ],
+  },
+  {
+    title: "第4条 利用目的の変更",
+    paragraphs: [
+      "当社は、変更前の利用目的と関連性を有すると合理的に認められる範囲で、個人情報の利用目的を変更することがあります。変更した場合は、当サイト上で公表するなど適切な方法により通知します。",
+    ],
+  },
+  {
+    title: "第5条 第三者提供",
+    paragraphs: [
+      "当社は、法令に基づく場合を除き、あらかじめ本人の同意を得ることなく個人情報を第三者に提供しません。ただし、業務委託先に必要な範囲で個人情報の取り扱いを委託する場合があります。",
+    ],
+  },
+  {
+    title: "第6条 安全管理",
+    paragraphs: [
+      "当社は、個人情報の漏えい、滅失、毀損等を防止するため、必要かつ適切な安全管理措置を講じるよう努めます。また、個人情報を取り扱う委託先に対して必要かつ適切な監督を行います。",
+    ],
+  },
+  {
+    title: "第7条 開示、訂正、利用停止等",
+    paragraphs: [
+      "本人から個人情報の開示、訂正、追加、削除、利用停止、消去、第三者提供の停止を求められた場合、当社は本人確認のうえ、法令に従って適切に対応します。",
+    ],
+  },
+  {
+    title: "第8条 Cookie等の利用",
+    paragraphs: [
+      "当サイトでは、利便性向上、アクセス状況の把握、サービス改善のため、Cookieその他類似技術を利用する場合があります。利用者はブラウザ設定によりCookieを無効にできますが、一部機能を利用できない場合があります。",
+    ],
+  },
+  {
+    title: "第9条 プライバシーポリシーの変更",
+    paragraphs: [
+      "当社は、必要に応じて本プライバシーポリシーを変更することがあります。変更後の内容は、当サイト上に掲載した時点から効力を生じるものとします。",
+    ],
+  },
+  {
+    title: "第10条 お問い合わせ窓口",
+    paragraphs: [
+      "本プライバシーポリシーに関するお問い合わせは、当サイトのお問い合わせフォームまたは以下の窓口までご連絡ください。",
+      `株式会社A-Key / ${siteConfig.companyEmail}`,
+    ],
+  },
+];
+---
+
+<SiteLayout title="プライバシーポリシー | L-Simu" description="L-Simuにおける個人情報の取得項目、利用目的、第三者提供、安全管理、開示・訂正・利用停止等の取り扱いを定めています。">
+  <main>
+    <PageHero title="プライバシーポリシー" lead="お問い合わせやサービス提供に関連して取得する情報の取り扱いについて掲載しています。" />
+    <section class="bg-white py-[58px] pb-[68px]">
+      <div class="mx-auto grid w-[min(860px,calc(100%_-_48px))] gap-6 text-[13px] leading-[1.9] font-bold text-[#39473d] max-sm:w-[min(100%_-_28px,480px)]">
+        <div class="animate-reveal-up rounded-xl border border-[#dbeee0] bg-white p-7 shadow-soft">
+          <p class="m-0 text-right text-xs font-black text-muted">制定日: 2026年6月8日</p>
+          <p class="mt-4 mb-0">
+            株式会社A-Key（以下「当社」といいます。）は、当社が提供するL-Simu（以下「本サービス」といいます。）における個人情報の取り扱いについて、以下のとおり定めます。
+          </p>
+        </div>
+        {
+          policySections.map((section) => (
+            <article class="animate-reveal-up rounded-xl border border-[#dbeee0] bg-white p-7 shadow-soft">
+              <h2 class="m-0 mb-3 text-lg font-black text-ink">{section.title}</h2>
+              <div class="grid gap-3">
+                {section.paragraphs.map((paragraph) => <p class="m-0">{paragraph}</p>)}
+                {section.list && (
+                  <ul class="m-0 grid gap-2 pl-5">
+                    {section.list.map((item) => <li>{item}</li>)}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</SiteLayout>

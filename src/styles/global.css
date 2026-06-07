@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #12984b;
+  --color-brand-dark: #0a7c3b;
+  --color-mint: #eef8ef;
+  --color-ink: #111712;
+  --color-muted: #5d6a61;
+  --shadow-soft: 0 18px 50px rgba(24, 86, 44, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--color-ink);
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    letter-spacing: 0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(211, 238, 212, 0.28), transparent 28%),
+      linear-gradient(180deg, #fff 0%, #fbfefb 100%);
+  }
+}
+
+@layer utilities {
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      translate: 0 18px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      box-shadow: 0 18px 50px rgba(24, 86, 44, 0.1);
+    }
+    50% {
+      box-shadow: 0 22px 58px rgba(18, 152, 75, 0.18);
+    }
+  }
+
+  .animate-reveal-up {
+    opacity: 0;
+    translate: 0 18px;
+    will-change: opacity, translate;
+  }
+
+  .animate-reveal-up.is-visible {
+    animation: reveal-up 0.75s ease both;
+  }
+
+  .animate-reveal-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-reveal-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-float-soft {
+    animation: float-soft 4.8s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 4s ease-in-out infinite;
+  }
+
+  .motion-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .motion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 58px rgba(24, 86, 44, 0.16);
+  }
+
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.32s ease, opacity 0.24s ease;
+  }
+
+  .faq-item[open] .faq-answer {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .faq-icon {
+    display: inline-block;
+    transform-origin: center;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    color: var(--color-brand);
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-reveal-up {
+      opacity: 1;
+      translate: 0 0;
+      animation: none;
+    }
+
+    .animate-float-soft,
+    .animate-pulse-soft {
+      animation: none;
+    }
+
+    .motion-card,
+    .motion-card:hover {
+      transform: none;
+      transition: none;
+    }
+
+    .faq-answer,
+    .faq-icon {
+      transition: none;
+    }
+  }
+}

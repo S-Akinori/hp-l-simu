@@ -1,0 +1,14 @@
+---
+import PageHero from "../components/PageHero.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import FaqSection from "../components/sections/FaqSection.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout title="よくあるご質問 | L-Simu" description="L-Simuの導入期間、操作性、料金、サポート体制に関するよくあるご質問をまとめました。">
+  <main>
+    <PageHero title="よくあるご質問" lead="導入前によくいただく質問をまとめました。掲載がない内容も、お問い合わせフォームからお気軽にご相談ください。" />
+    <FaqSection />
+    <CtaSection />
+  </main>
+</SiteLayout>

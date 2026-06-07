@@ -1,0 +1,32 @@
+---
+import PageHero from "../components/PageHero.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import { industries } from "../data/lpContent";
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout title="業界別シミュレーション例 | L-Simu" description="交通事故慰謝料、買取査定、不動産査定、外壁塗装、保険料など、L-Simuで作成できるシミュレーション例を紹介します。">
+  <main>
+    <PageHero title="業界別シミュレーション例" lead="専門性の高いサービスでも、ユーザーが自分ごととして検討できるシミュレーション体験を設計できます。" />
+
+    <section class="relative rounded-t-[32px] bg-white py-[58px] pb-[68px] max-sm:py-11 max-sm:pb-[52px]">
+      <SectionTitle title="活用できる業界例" />
+      <div class="mx-auto grid w-[min(1080px,calc(100%_-_48px))] grid-cols-3 gap-6 max-[980px]:grid-cols-2 max-sm:w-[min(100%_-_28px,480px)] max-sm:grid-cols-1">
+        {
+          industries.map((item) => (
+            <article class="motion-card animate-reveal-up overflow-hidden rounded-xl bg-white shadow-[0_12px_32px_rgba(24,86,44,0.12)]">
+              <div class="h-[190px] bg-[linear-gradient(145deg,#e9f5ee,#f9fbfb)]"><img class="h-full w-full object-cover" src={item.image} alt="" loading="lazy" /></div>
+              <div class="p-5">
+                <h2 class="m-0 mb-3 text-lg font-black">{item.title}</h2>
+                <p class="m-0 text-[13px] leading-[1.85] font-bold text-[#243129]">{item.text}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <CtaSection />
+  </main>
+</SiteLayout>

@@ -1,0 +1,32 @@
+---
+import PageHero from "../components/PageHero.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import { voices } from "../data/lpContent";
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout title="お客様の声 | L-Simu" description="L-Simuを導入したお客様の声を紹介します。問い合わせ数や成約率、業務効率の改善に貢献します。">
+  <main>
+    <PageHero title="お客様の声" lead="問い合わせの量だけでなく、見込み客の質や商談前の説明効率にも変化が生まれています。" />
+
+    <section class="relative bg-linear-to-b from-[#f7fcf7] to-white py-[58px] pb-[68px] max-sm:py-11 max-sm:pb-[52px]">
+      <SectionTitle title="導入企業のコメント" />
+      <div class="mx-auto grid w-[min(1080px,calc(100%_-_48px))] grid-cols-3 gap-[34px] max-[980px]:grid-cols-2 max-sm:w-[min(100%_-_28px,480px)] max-sm:grid-cols-1">
+        {
+          voices.map((item) => (
+            <article class="motion-card animate-reveal-up min-h-[220px] rounded-[11px] bg-white px-7 py-[25px] shadow-soft">
+              <div class="mb-4 flex items-center gap-[13px]">
+                <img class="h-[50px] w-[50px] rounded-full bg-[#edf8ef] object-contain" src={`/assets/${item.avatar}`} alt="" />
+                <strong class="text-[14px] font-black">{item.name}</strong>
+              </div>
+              <p class="m-0 text-[13px] leading-[1.9] font-bold">{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <CtaSection />
+  </main>
+</SiteLayout>

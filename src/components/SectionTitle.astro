@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+  green?: boolean;
+}
+
+const { title, green = false } = Astro.props;
+---
+
+<div class="mb-[46px] text-center">
+  <h2 class:list={["m-0 text-[26px] font-black max-sm:text-[22px]", { "text-brand": green }]}>{title}</h2>
+  <span class="mx-auto mt-[11px] block h-2 w-12 bg-[radial-gradient(circle,var(--color-brand)_2px,transparent_3px)] bg-[length:12px_8px] bg-repeat-x"></span>
+</div>

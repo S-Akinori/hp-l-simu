@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import PageHeroAbstract from "../images/page-hero-abstract.png";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead: string;
+}
+
+const { eyebrow = "L-Simu", title, lead } = Astro.props;
+---
+
+<section class="relative isolate overflow-hidden bg-[#fbfdfb]">
+  <Image
+    src={PageHeroAbstract}
+    alt=""
+    width={1680}
+    height={945}
+    class="absolute inset-0 -z-20 h-full w-full object-cover opacity-90"
+    loading="eager"
+    decoding="async"
+    aria-hidden="true"
+  />
+  <div class="absolute inset-0 -z-10 bg-linear-to-r from-white via-white/88 to-white/58"></div>
+  <div class="absolute inset-x-0 bottom-0 -z-10 h-px bg-linear-to-r from-transparent via-brand/18 to-transparent"></div>
+  <div class="mx-auto grid min-h-[340px] w-[min(1080px,calc(100%_-_48px))] items-center py-16 max-sm:w-[min(100%_-_28px,480px)] max-sm:py-12">
+    <div class="animate-reveal-up max-w-[720px] rounded-[6px] py-2">
+      <p class="m-0 mb-4 text-sm font-black text-brand">{eyebrow}</p>
+      <h1 class="m-0 text-[42px] leading-[1.25] font-black text-ink max-sm:text-[30px]">{title}</h1>
+      <p class="mt-5 mb-0 text-[15px] leading-8 font-bold text-[#39473d]">{lead}</p>
+      <div class="mt-8 flex gap-3.5 max-sm:flex-col">
+        <Button href="/contact/" variant="solid" size="lg" icon="mail">お問い合わせ</Button>
+        <Button href="/" variant="outline" size="lg">トップへ戻る</Button>
+      </div>
+    </div>
+  </div>
+</section>

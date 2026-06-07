@@ -1,0 +1,78 @@
+---
+import PageHero from "../components/PageHero.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { companyTelHref, siteConfig } from "../config/site";
+
+const companyInfo = [
+  { label: "サービス名", lines: ["L-Simu"] },
+  { label: "運営会社", lines: ["株式会社A-Key"] },
+  { label: "設立", lines: ["2023年3月3日"] },
+  { label: "代表取締役", lines: ["佐保田 晃功"] },
+  {
+    label: "所在地",
+    lines: ["〒106-0032", "東京都港区六本木7-11-17"],
+  },
+  {
+    label: "事業内容",
+    lines: ["ITソリューション事業", "教育事業", "ライフスタイル事業"],
+  },
+  {
+    label: "電話番号",
+    lines: [siteConfig.companyTel],
+    href: companyTelHref,
+  },
+  {
+    label: "メール",
+    lines: [siteConfig.companyEmail],
+    href: `mailto:${siteConfig.companyEmail}`,
+  },
+  {
+    label: "公式サイト",
+    lines: [siteConfig.companySiteUrl],
+    href: siteConfig.companySiteUrl,
+    external: true,
+  },
+];
+---
+
+<SiteLayout title="運営会社 | L-Simu" description="L-Simuを運営する株式会社A-Keyの会社概要です。所在地、設立、代表者、事業内容、連絡先を掲載しています。">
+  <main>
+    <PageHero title="運営会社" lead="L-Simuの運営に関する基本情報を掲載しています。" />
+    <section class="bg-white py-[58px] pb-[68px]">
+      <div class="mx-auto grid w-[min(860px,calc(100%_-_48px))] gap-6 rounded-xl border border-[#dbeee0] bg-white p-8 shadow-soft max-sm:w-[min(100%_-_28px,480px)] max-sm:p-6">
+        <div class="animate-reveal-up">
+          <p class="m-0 mb-3 text-sm font-black text-brand">Company</p>
+          <h2 class="m-0 text-[26px] font-black text-ink max-sm:text-[22px]">株式会社A-Key</h2>
+          <p class="mt-4 mb-0 text-[13px] leading-[1.9] font-bold text-[#39473d]">
+            L-Simuは、ITソリューション・教育・ライフスタイル事業を展開する株式会社A-Keyが運営しています。
+          </p>
+        </div>
+        <dl class="m-0 grid text-[13px] font-bold">
+          {
+            companyInfo.map((item, index) => (
+              <div class={`grid grid-cols-[150px_1fr] gap-5 py-4 max-sm:grid-cols-1 max-sm:gap-2 ${index === companyInfo.length - 1 ? "" : "border-b border-[#edf4ee]"}`}>
+                <dt class="text-muted">{item.label}</dt>
+                <dd class="m-0 leading-[1.9] text-ink">
+                  {
+                    item.href ? (
+                      <a
+                        class="text-brand transition hover:opacity-75"
+                        href={item.href}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noreferrer" : undefined}
+                      >
+                        {item.lines[0]}
+                      </a>
+                    ) : (
+                      item.lines.map((line) => <span class="block">{line}</span>)
+                    )
+                  }
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

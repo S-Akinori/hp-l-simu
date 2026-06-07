@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import ContactIcon from '../images/contact.svg';
+import DocsIcon from '../images/docs.svg';
+
+interface Props {
+  name: "mail" | "doc";
+}
+
+const { name } = Astro.props;
+---
+
+{
+  name === "mail" ? (
+    <ContactIcon width="24" height="24" />
+  ) : (
+    <Image src={DocsIcon} alt="資料請求" width={24} height={24} />
+  )
+}

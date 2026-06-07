@@ -1,0 +1,26 @@
+---
+import SectionTitle from "../SectionTitle.astro";
+import { faqs } from "../../data/lpContent";
+---
+
+<section id="faq" class="relative rounded-t-[34px] bg-white pt-5 pb-[68px] max-sm:pb-[52px]">
+  <SectionTitle title="よくあるご質問" />
+  <div class="mx-auto w-[min(760px,calc(100%_-_48px))] max-sm:w-[min(100%_-_28px,480px)]">
+    {
+      faqs.map((faq) => (
+        <details class="faq-item border-t border-[#cbd8cf] last:border-b">
+          <summary class="grid min-h-[54px] cursor-pointer list-none grid-cols-[28px_1fr_22px] items-center gap-3.5 text-sm font-black marker:hidden max-sm:grid-cols-[28px_1fr_18px] max-sm:text-[13px] [&::-webkit-details-marker]:hidden">
+            <span class="grid h-6 w-6 place-items-center rounded-full bg-brand text-[13px] text-white">Q</span>
+            {faq}
+            <b class="faq-icon text-[22px] font-semibold text-[#2f3d34]">＋</b>
+          </summary>
+          <div class="faq-answer">
+            <div class="overflow-hidden">
+              <p class="mt-[-4px] mr-0 mb-[18px] ml-[42px] text-[13px] font-bold text-muted">お客様の状況に合わせて、初回相談時に詳しくご案内します。</p>
+            </div>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>

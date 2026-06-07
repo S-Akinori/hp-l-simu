@@ -1,0 +1,33 @@
+---
+import PageHero from "../components/PageHero.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import { plans } from "../data/lpContent";
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout title="料金プラン | L-Simu" description="L-Simuの料金プランを紹介します。ライト、スタンダード、カスタムの各プランから目的に合わせて選べます。">
+  <main>
+    <PageHero title="料金プラン" lead="導入目的やシミュレーションBotの数、連携要件に応じて最適なプランをご提案します。" />
+
+    <section class="bg-linear-to-b from-[#edf8ef] to-[#f7fcf7] py-[58px] pb-[68px]">
+      <SectionTitle title="プラン一覧" green />
+      <div class="mx-auto grid w-[min(1080px,calc(100%_-_48px))] grid-cols-3 gap-6 max-[980px]:grid-cols-2 max-sm:w-[min(100%_-_28px,480px)] max-sm:grid-cols-1">
+        {
+          plans.map((plan) => (
+            <article class="motion-card animate-reveal-up rounded-xl bg-white p-7 shadow-soft">
+              <h2 class="m-0 mb-3 text-2xl font-black text-brand">{plan.name}</h2>
+              <p class="m-0 mb-4 text-xl font-black">{plan.price}</p>
+              <p class="m-0 mb-6 text-[13px] leading-[1.9] font-bold text-[#39473d]">{plan.description}</p>
+              <ul class="m-0 grid list-none gap-3 p-0 text-[13px] font-bold text-[#243129]">
+                {plan.items.map((item) => <li class="before:mr-2 before:text-brand before:content-['✓']">{item}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <CtaSection />
+  </main>
+</SiteLayout>

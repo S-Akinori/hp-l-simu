@@ -1,0 +1,29 @@
+---
+import ContactSection from "../components/sections/ContactSection.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import FaqSection from "../components/sections/FaqSection.astro";
+import FeaturesSection from "../components/sections/FeaturesSection.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import IndustriesSection from "../components/sections/IndustriesSection.astro";
+import ProblemSection from "../components/sections/ProblemSection.astro";
+import SolutionSection from "../components/sections/SolutionSection.astro";
+import VoiceSection from "../components/sections/VoiceSection.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="L-Simu | シミュレーションBotで問い合わせを増やすLP支援サービス"
+  description="L-Simuは、Webサイト上で使えるシミュレーションBotを作成し、見込み客の関心を高めて問い合わせ・資料請求・成約につなげるサービスです。"
+>
+  <main id="top">
+    <HeroSection />
+    <ProblemSection />
+    <SolutionSection />
+    <FeaturesSection />
+    <IndustriesSection />
+    <CtaSection />
+    <VoiceSection />
+    <FaqSection />
+    <ContactSection />
+  </main>
+</SiteLayout>

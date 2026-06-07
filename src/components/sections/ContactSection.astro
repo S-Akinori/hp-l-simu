@@ -1,0 +1,46 @@
+---
+import SectionTitle from "../SectionTitle.astro";
+import Button from "../Button.astro";
+import { siteConfig } from "../../config/site";
+
+const fieldClass =
+  "mt-2 min-h-[42px] w-full rounded-[5px] border border-[#dbeee0] bg-white px-4 text-[13px] text-ink outline-none [font:inherit] transition focus:border-brand focus:ring-2 focus:ring-brand/15";
+const labelClass = "block text-[13px] font-extrabold text-[#26372c]";
+---
+
+<section id="contact" class="relative rounded-t-[26px] bg-linear-to-b from-[#edf8ef] to-[#f7fcf7] py-[58px] pb-[72px] max-sm:py-11 max-sm:pb-[52px]">
+  <SectionTitle title="お問い合わせ" />
+  <div class="mx-auto w-[min(900px,calc(100%_-_48px))] max-sm:w-[min(100%_-_28px,480px)]">
+    <p class="mx-auto mb-8 max-w-[520px] text-center text-[13px] leading-[1.9] font-bold text-[#39473d]">
+      サービスに関するご質問・ご相談など、お気軽にお問い合わせください。担当者より2営業日以内にご連絡いたします。
+    </p>
+
+    <form class="animate-reveal-up grid gap-4 rounded-xl border border-[#dbeee0] bg-white/80 p-7 shadow-soft max-sm:p-5" action={siteConfig.formletEndpoint} method="POST">
+      <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+        <label class={labelClass}>お名前 ※<input class={fieldClass} name="name" required /></label>
+        <label class={labelClass}>会社・事務所名 ※<input class={fieldClass} name="company" required /></label>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+        <label class={labelClass}>メールアドレス ※<input class={fieldClass} name="email" type="email" required /></label>
+        <label class={labelClass}>電話番号<input class={fieldClass} name="tel" type="tel" /></label>
+      </div>
+
+      <label class={labelClass}>
+        業種
+        <select class={`${fieldClass} appearance-none bg-white`} name="industry">
+          <option value="法律事務所">法律事務所</option>
+          <option value="行政書士事務所">行政書士事務所</option>
+          <option value="保険代理店">保険代理店</option>
+          <option value="車両鑑定・修理関連">車両鑑定・修理関連</option>
+          <option value="その他">その他</option>
+        </select>
+      </label>
+
+      <label class={labelClass}>お問い合わせ内容 ※<textarea class={`${fieldClass} min-h-[126px] resize-y pt-3`} name="message" required></textarea></label>
+
+      <input name="_formlet_hp" hidden />
+      <Button type="submit" variant="solid" size="md" full>送信する</Button>
+    </form>
+  </div>
+</section>
