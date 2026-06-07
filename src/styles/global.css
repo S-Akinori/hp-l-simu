@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@source "../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
+
 @theme {
   --color-brand: #12984b;
   --color-brand-dark: #0a7c3b;
